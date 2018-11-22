@@ -9,6 +9,20 @@ const compress = require('compression')
 const app = express()
 app.use(compress())
 
+app.post('/api/init_data', function (req, res) {
+  if(Math.random() < 0.7) {
+      res.json({ 
+          status: "ok",
+          data: { table1: {}, table2: {}, tabl3: {} }
+      });
+  } else {
+      res.json({ 
+          status: "error",
+          data: { error: "sdfasdf" }
+      });
+  }
+  
+});
 // ------------------------------------
 // Apply Webpack HMR Middleware
 // ------------------------------------
