@@ -5,11 +5,11 @@ import './PageLayout.scss'
 
 let linkToName = [
   { link: "/", name: "Начальная страница" }, //HOME
-  { link: "/counter", name: "Counter" },
-  { link: "/about", name: "About" },
-  { link: "/test", name: "Test" },
-  { link: "/counter", name: "Counter" },
-  { link: "/about", name: "About" },
+  // { link: "/counter", name: "Counter" },
+  // { link: "/about", name: "About" },
+  { link: "/add", name: "Добавить" },
+  { link: "/correct", name: "Редактировать" },
+  { link: "/remove", name: "Удалить" },
 ]
 
 export const PageLayout = ({ children }) => (
