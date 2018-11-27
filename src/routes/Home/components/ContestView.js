@@ -28,14 +28,15 @@ const styles = theme => ({
 class EnhancedTable extends React.Component {
 	state = {
 		order: 'asc',
-		orderBy: 'idMember',
+		orderBy: 'idContest',
 		selected: [],
-		data: this.props.memberTable,
+		data: this.props.contestTable,
 		page: 0,
 		rowsPerPage: 5,
 	};
 
 	handleRequestSort = (event, property) => {
+		console.log(22)
 		const orderBy = property;
 		let order = 'desc';
 
@@ -61,9 +62,8 @@ class EnhancedTable extends React.Component {
 		const emptyRows = rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
 
 		return (
-			<div>
-				<TableName text='Участники'/>
-			
+			<div style={{paddingTop:50}}>
+				<TableName text='Соревнования'/>			
 				<Paper className={classes.root}>
 					<div className={classes.tableWrapper}>
 						<Table className={classes.table} aria-labelledby="tableTitle">
@@ -72,15 +72,12 @@ class EnhancedTable extends React.Component {
 								orderBy={orderBy}
 								onRequestSort={this.handleRequestSort}
 								rows = {[
-									{ id: 'idMember', numeric: true, disablePadding: false, label: '#' },
-									{ id: 'secondName', numeric: false, disablePadding: false, label: 'Фамилия' },
-									{ id: 'firstName', numeric: false, disablePadding: false, label: 'Имя' },
-									{ id: 'lastName', numeric: false, disablePadding: false, label: 'Отчество' },
-									{ id: 'number', numeric: true, disablePadding: false, label: 'Номер участника' },
-									{ id: 'contestId', numeric: true, disablePadding: false, label: 'Номер соревнования' },
-									{ id: 'organizationId', numeric: true, disablePadding: false, label: 'Номер организация' },
-									{ id: 'resultId', numeric: true, disablePadding: false, label: 'Номер результата' },
-									{ id: 'groupId', numeric: true, disablePadding: false, label: 'Номер группы' }									
+									{ id: 'idContest', numeric: true, disablePadding: false, label: '#' },
+									{ id: 'name', numeric: false, disablePadding: false, label: 'Название соревнования' },
+									{ id: 'status', numeric: false, disablePadding: false, label: 'Статус' },
+									{ id: 'startDate', numeric: true, disablePadding: false, label: 'Дата начала' },
+									{ id: 'endDate', numeric: true, disablePadding: false, label: 'Дата окончания' },
+									{ id: 'organizationId', numeric: true, disablePadding: false, label: 'Номер организации' },
 								]}
 							/>
 							<TableBody>
@@ -98,15 +95,11 @@ class EnhancedTable extends React.Component {
 												selected={isSelected}
 											>
 												<TableCell numeric>{n.id}</TableCell>
-												<TableCell>{n.secondName}</TableCell>
-												<TableCell>{n.firstName}</TableCell>
-												<TableCell>{n.lastName}</TableCell>
-												<TableCell numeric>{n.number}</TableCell>
-												<TableCell numeric>{n.contestId}</TableCell>
+												<TableCell>{n.name}</TableCell>
+												<TableCell>{n.status}</TableCell>
+												<TableCell numeric>{n.startDate}</TableCell>
+												<TableCell numeric>{n.endDate}</TableCell>
 												<TableCell numeric>{n.organizationId}</TableCell>
-												<TableCell numeric>{n.resultId}</TableCell>
-												<TableCell numeric>{n.groupId}</TableCell>
-												
 											</TableRow>
 										);
 									})}
@@ -135,7 +128,7 @@ class EnhancedTable extends React.Component {
 
 EnhancedTable.propTypes = {
 	classes: PropTypes.object.isRequired,
-	memberTable: PropTypes.array.isRequired
+	contestTable: PropTypes.array.isRequired
 };
 
 export default withStyles(styles)(EnhancedTable);

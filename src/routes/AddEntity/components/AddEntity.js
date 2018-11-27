@@ -5,6 +5,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
+import MemberForm from '../../../components/MemberForm';
 
 function TabContainer(props) {
   return (
@@ -50,22 +51,25 @@ class AddEntity extends React.Component {
             scrollable
             scrollButtons="auto"
           >
-            <Tab label="Item One" />
-            <Tab label="Item Two" />
-            <Tab label="Item Three" />
-            <Tab label="Item Four" />
-            <Tab label="Item Five" />
-            <Tab label="Item Six" />
-            <Tab label="Item Seven" />
+            <Tab label="УЧАСТНИКИ" />
+            <Tab label="СУДЬИ" />
+            <Tab label="СОРЕВНОВАНИЯ" />
+            <Tab label="НАРУШЕНИЯ" />
+            <Tab label="ГРУППЫ" />
+            <Tab label="ОРГАНИЗАЦИИ" />
+            <Tab label="МЕСТОПОЛОЖЕНИЯ" />
+            <Tab label="РЕЗУЛЬТАТЫ" />
           </Tabs>
         </AppBar>
-        {value === 0 && <TabContainer>Item One</TabContainer>}
+        {value === 0 && <TabContainer><MemberForm/></TabContainer>}
         {value === 1 && <TabContainer>Item Two</TabContainer>}
         {value === 2 && <TabContainer>Item Three</TabContainer>}
         {value === 3 && <TabContainer>Item Four</TabContainer>}
         {value === 4 && <TabContainer>Item Five</TabContainer>}
         {value === 5 && <TabContainer>Item Six</TabContainer>}
         {value === 6 && <TabContainer>Item Seven</TabContainer>}
+        {value === 7 && <TabContainer>Item Six</TabContainer>}
+        {value === 8 && <TabContainer>Item Seven</TabContainer>}
       </div>
     );
   }

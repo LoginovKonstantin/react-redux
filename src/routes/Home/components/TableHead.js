@@ -7,21 +7,13 @@ import TableRow from '@material-ui/core/TableRow';
 import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Tooltip from '@material-ui/core/Tooltip';
 
-const rows = [
-	{ id: 'name', numeric: false, disablePadding: true, label: 'Dessert (100g serving)' },
-	{ id: 'calories', numeric: true, disablePadding: false, label: 'Calories' },
-	{ id: 'fat', numeric: true, disablePadding: false, label: 'Fat (g)' },
-	{ id: 'carbs', numeric: true, disablePadding: false, label: 'Carbs (g)' },
-	{ id: 'protein', numeric: true, disablePadding: false, label: 'Protein (g)' },
-];
-
 class EnhancedTableHead extends React.Component {
 	createSortHandler = property => event => {
 		this.props.onRequestSort(event, property);
 	};
 
 	render() {
-		const { order, orderBy } = this.props;
+		const { order, orderBy, rows } = this.props;
 		return (
 			<TableHead>
 				<TableRow>
@@ -59,6 +51,7 @@ EnhancedTableHead.propTypes = {
 	onRequestSort: PropTypes.func.isRequired,
 	order: PropTypes.string.isRequired,
 	orderBy: PropTypes.string.isRequired,
+	rows: PropTypes.array.isRequired
 };
 
 export default (EnhancedTableHead);

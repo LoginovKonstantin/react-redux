@@ -1,8 +1,8 @@
-const HOST = "http://localhost";
-const PORT = "3000";
+const HOST = "http://localhost:3000";
 
 const ENDPOINTS = {
-    HOME: HOST + ":" + PORT + "/api/init_data"
+    HOME: HOST + "/api/getTables",
+    ADD_ENTITY: HOST + "/api/addEntity"
 }
 
 const POST_REQUEST = (...params) => ({

@@ -56,7 +56,9 @@ class PageLayout extends React.Component {
             {linkToName.map(TemplateNavigation)}
           </Tabs>
         </AppBar>
-        {children}
+        <div className='container'>
+          {children}
+        </div>
       </div>
     );
   }
