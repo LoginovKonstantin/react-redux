@@ -11,6 +11,7 @@ import Paper from '@material-ui/core/Paper';
 import EnhancedTableHead from './TableHead';
 import TableName from '../../../components/TableName';
 import { stableSort, getSorting } from '../../../util';
+import { browserHistory } from 'react-router'
 
 const styles = theme => ({
 	root: {
@@ -62,8 +63,8 @@ class EnhancedTable extends React.Component {
 		const emptyRows = rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
 
 		return (
-			<div style={{paddingTop:50}}>
-				<TableName text='Соревнования'/>			
+			<div style={{ paddingTop: 50 }}>
+				<TableName text='Соревнования' />
 				<Paper className={classes.root}>
 					<div className={classes.tableWrapper}>
 						<Table className={classes.table} aria-labelledby="tableTitle">
@@ -71,7 +72,7 @@ class EnhancedTable extends React.Component {
 								order={order}
 								orderBy={orderBy}
 								onRequestSort={this.handleRequestSort}
-								rows = {[
+								rows={[
 									{ id: 'idContest', numeric: true, disablePadding: false, label: '#' },
 									{ id: 'name', numeric: false, disablePadding: false, label: 'Название соревнования' },
 									{ id: 'status', numeric: false, disablePadding: false, label: 'Статус' },
@@ -94,7 +95,7 @@ class EnhancedTable extends React.Component {
 												key={n.id}
 												selected={isSelected}
 											>
-												<TableCell numeric>{n.id}</TableCell>
+												<TableCell onClick={() => browserHistory.push('/edit/contest/'+n.id)} numeric>{n.id}</TableCell>
 												<TableCell>{n.name}</TableCell>
 												<TableCell>{n.status}</TableCell>
 												<TableCell numeric>{n.startDate}</TableCell>

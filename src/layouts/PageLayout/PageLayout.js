@@ -10,11 +10,13 @@ import Typography from '@material-ui/core/Typography';
 
 let linkToName = [
   { link: "/", name: "Начальная страница" }, //HOME
+  { link: "/add", name: "Добавить" },
+  // { link: "/edit/member/?id=*", name: "Редактировать" },
   // { link: "/counter", name: "Counter" },
   // { link: "/about", name: "About" },
-  { link: "/add", name: "Добавить" },
-  { link: "/correct", name: "Редактировать" },
-  { link: "/remove", name: "Удалить" },
+  
+  // { link: "/correct", name: "Редактировать" },
+  // { link: "/remove", name: "Удалить" },
 ]
 
 

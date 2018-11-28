@@ -30,6 +30,7 @@ export default class HomeView extends React.Component {
 	processing(response) {
 		if (response.status.toLowerCase() == 'ok') {
 			this.setState({ status: s[1], open:true, tables:response['response'] })
+			
 		}
 		else this.setState({ status: s[2] })
 	}

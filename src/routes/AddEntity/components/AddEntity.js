@@ -6,6 +6,13 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import MemberForm from '../../../components/MemberForm';
+import LocationForm from '../../../components/LocationForm';
+import OrganizationForm from '../../../components/OrganizationForm';
+import ContestForm from '../../../components/ContestForm';
+import ResultForm from '../../../components/ResultForm';
+import GroupForm from '../../../components/GroupForm';
+import JudgeForm from '../../../components/JudgeForm';
+import InfringementForm from '../../../components/InfringementForm';
 
 function TabContainer(props) {
   return (
@@ -62,14 +69,13 @@ class AddEntity extends React.Component {
           </Tabs>
         </AppBar>
         {value === 0 && <TabContainer><MemberForm/></TabContainer>}
-        {value === 1 && <TabContainer>Item Two</TabContainer>}
-        {value === 2 && <TabContainer>Item Three</TabContainer>}
-        {value === 3 && <TabContainer>Item Four</TabContainer>}
-        {value === 4 && <TabContainer>Item Five</TabContainer>}
-        {value === 5 && <TabContainer>Item Six</TabContainer>}
-        {value === 6 && <TabContainer>Item Seven</TabContainer>}
-        {value === 7 && <TabContainer>Item Six</TabContainer>}
-        {value === 8 && <TabContainer>Item Seven</TabContainer>}
+        {value === 1 && <TabContainer><JudgeForm/></TabContainer>}
+        {value === 2 && <TabContainer><ContestForm/></TabContainer>}
+        {value === 3 && <TabContainer><InfringementForm/></TabContainer>}
+        {value === 4 && <TabContainer><GroupForm/></TabContainer>}
+        {value === 5 && <TabContainer><OrganizationForm/></TabContainer>}
+        {value === 6 && <TabContainer><LocationForm/></TabContainer>}
+        {value === 7 && <TabContainer><ResultForm/></TabContainer>}
       </div>
     );
   }

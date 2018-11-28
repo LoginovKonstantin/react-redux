@@ -14,10 +14,9 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 app.post('/api/addEntity', function (req, res) {
-  console.log(req.body);
-
+  console.log(req.body.table);
   res.json({
-    "status": "error",
+    "status": "ok",
     "response": "bad error"
   })
 })

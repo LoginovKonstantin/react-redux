@@ -11,6 +11,7 @@ import Paper from '@material-ui/core/Paper';
 import EnhancedTableHead from './TableHead';
 import TableName from '../../../components/TableName';
 import { stableSort, getSorting } from '../../../util';
+import { browserHistory } from 'react-router'
 
 const styles = theme => ({
 	root: {
@@ -61,8 +62,8 @@ class EnhancedTable extends React.Component {
 		const emptyRows = rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
 
 		return (
-			<div style={{paddingTop:50}}>
-				<TableName text='Судьи'/>			
+			<div style={{ paddingTop: 50 }}>
+				<TableName text='Судьи' />
 				<Paper className={classes.root}>
 					<div className={classes.tableWrapper}>
 						<Table className={classes.table} aria-labelledby="tableTitle">
@@ -70,13 +71,13 @@ class EnhancedTable extends React.Component {
 								order={order}
 								orderBy={orderBy}
 								onRequestSort={this.handleRequestSort}
-								rows = {[
-                                    { id: 'idJudge', numeric: true, disablePadding: false, label: '#' },
-                                    { id: 'secondName', numeric: false, disablePadding: false, label: 'Фамилия' },
+								rows={[
+									{ id: 'idJudge', numeric: true, disablePadding: false, label: '#' },
+									{ id: 'secondName', numeric: false, disablePadding: false, label: 'Фамилия' },
 									{ id: 'firstName', numeric: false, disablePadding: false, label: 'Имя' },
-                                    { id: 'lastName', numeric: false, disablePadding: false, label: 'Отчество' },
-                                    { id: 'organizationId', numeric: true, disablePadding: false, label: 'Номер организации' },
-                                    { id: 'contestId', numeric: true, disablePadding: false, label: 'Номер соревнования' },
+									{ id: 'lastName', numeric: false, disablePadding: false, label: 'Отчество' },
+									{ id: 'organizationId', numeric: true, disablePadding: false, label: 'Номер организации' },
+									{ id: 'contestId', numeric: true, disablePadding: false, label: 'Номер соревнования' },
 								]}
 							/>
 							<TableBody>
@@ -93,8 +94,8 @@ class EnhancedTable extends React.Component {
 												key={n.id}
 												selected={isSelected}
 											>
-                                                <TableCell numeric>{n.id}</TableCell>
-                                                <TableCell>{n.secondName}</TableCell>
+												<TableCell onClick={() => browserHistory.push('/edit/judge/'+n.id)} numeric>{n.id}</TableCell>
+												<TableCell>{n.secondName}</TableCell>
 												<TableCell>{n.firstName}</TableCell>
 												<TableCell>{n.lastName}</TableCell>
 												<TableCell numeric>{n.organizationId}</TableCell>

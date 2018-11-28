@@ -4,7 +4,7 @@ import Home from './Home'
 import CounterRoute from './Counter'
 import AboutRoute from './About'
 import AddEntity from './AddEntity'
-import RemoveEntity from './RemoveEntity'
+import EditEntity from './EditEntity'
 
 /*  Note: Instead of using JSX, we recommend using react-router
     PlainRoute objects to build route definitions.   */
@@ -15,9 +15,9 @@ export const createRoutes = (store) => ({
   indexRoute  : Home,
   childRoutes : [
     AddEntity(store),
-    RemoveEntity(store),
-    CounterRoute(store),
-    AboutRoute(store)
+    EditEntity(store),
+    // CounterRoute(store),
+    // AboutRoute(store)
   ]
 })
 

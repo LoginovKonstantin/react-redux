@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-class RemoveEntity extends React.Component {
+class EditEntity extends React.Component {
   static propTypes = {
     // store: PropTypes.object.isRequired,
     // routes: PropTypes.object.isRequired,
@@ -12,10 +12,11 @@ class RemoveEntity extends React.Component {
   }
 
   render () {
+    console.log(window.location);
     return (
-      <div>Remove entity</div>
+      <div>EDit</div>
     )
   }
 }
 
-export default RemoveEntity
+export default EditEntity

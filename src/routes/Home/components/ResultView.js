@@ -11,6 +11,7 @@ import Paper from '@material-ui/core/Paper';
 import EnhancedTableHead from './TableHead';
 import TableName from '../../../components/TableName';
 import { stableSort, getSorting } from '../../../util';
+import { browserHistory } from 'react-router'
 
 const styles = theme => ({
 	root: {
@@ -97,7 +98,7 @@ class EnhancedTable extends React.Component {
 												key={n.id}
 												selected={isSelected}
 											>
-												{/* <TableCell numeric>{n.id}</TableCell>
+												{/* <TableCell onClick={() => browserHistory.push('/edit/result/'+n.id)} numeric>{n.id}</TableCell>
 												<TableCell>{n.secondName}</TableCell>
 												<TableCell>{n.firstName}</TableCell>
 												<TableCell>{n.lastName}</TableCell>
