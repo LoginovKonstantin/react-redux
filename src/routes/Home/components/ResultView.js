@@ -98,7 +98,7 @@ class EnhancedTable extends React.Component {
 												key={n.id}
 												selected={isSelected}
 											>
-												{/* <TableCell onClick={() => browserHistory.push('/edit/result/'+n.id)} numeric>{n.id}</TableCell>
+												{/* <TableCell onClick={() => browserHistory.push('/edit/results/'+n.id)} numeric>{n.id}</TableCell>
 												<TableCell>{n.secondName}</TableCell>
 												<TableCell>{n.firstName}</TableCell>
 												<TableCell>{n.lastName}</TableCell>

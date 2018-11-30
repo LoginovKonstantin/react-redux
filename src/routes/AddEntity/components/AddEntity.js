@@ -5,14 +5,14 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
-import MemberForm from '../../../components/MemberForm';
-import LocationForm from '../../../components/LocationForm';
-import OrganizationForm from '../../../components/OrganizationForm';
-import ContestForm from '../../../components/ContestForm';
-import ResultForm from '../../../components/ResultForm';
-import GroupForm from '../../../components/GroupForm';
-import JudgeForm from '../../../components/JudgeForm';
-import InfringementForm from '../../../components/InfringementForm';
+import MemberForm from '../../../components/add/MemberForm';
+import LocationForm from '../../../components/add/LocationForm';
+import OrganizationForm from '../../../components/add/OrganizationForm';
+import ContestForm from '../../../components/add/ContestForm';
+import ResultForm from '../../../components/add/ResultForm';
+import GroupForm from '../../../components/add/GroupForm';
+import JudgeForm from '../../../components/add/JudgeForm';
+import InfringementForm from '../../../components/add/InfringementForm';
 
 function TabContainer(props) {
   return (

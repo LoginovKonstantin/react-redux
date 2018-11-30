@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import Noty from './Noty';
-import CONFIG from '../config';
+import Noty from '../Noty';
+import CONFIG from '../../config';
 
 const styles = theme => ({
 	container: {
@@ -24,8 +24,8 @@ const styles = theme => ({
 
 class OutlinedTextFields extends React.Component {
 	state = {
-		city: '',
-		country: '',
+		name: '',
+		locationId: '',
 		status: '',
 		open: false
 	};
@@ -38,7 +38,7 @@ class OutlinedTextFields extends React.Component {
 
 	handleSubmit = () => {
 		const state = this.state;
-		if (state.city.length < 1 || state.country.length < 1) {
+		if (state.name.length < 1 || state.locationId < 1) {
 			console.log("Не все поля зоплнены");
 		} else {
 			fetch(CONFIG.ENDPOINTS.ADD_ENTITY, {
@@ -48,9 +48,9 @@ class OutlinedTextFields extends React.Component {
 					'Content-Type': 'application/json'
 				},
 				body: JSON.stringify({
-					table: "location",
-					country: state.country,
-					city: state.city
+					table: "organization",
+					name: state.name,
+					locationId: state.locationId
 				})
 			}).then(resp => resp.json()).then(json => {
 				if (json.status == "ok") this.setState({ status: "ok", open: true })
@@ -71,10 +71,10 @@ class OutlinedTextFields extends React.Component {
 		return (
 			<div>
 				<form className={classes.container} autoComplete="off">
-					<TextField fullWidth id="outlined-name" label="Страна *" className={classes.textField} value={this.state.country}
-						onChange={this.handleChange('country')} margin="normal" variant="outlined" />
-					<TextField fullWidth id="outlined-name" label="Город *" className={classes.textField} value={this.state.city}
-						onChange={this.handleChange('city')} margin="normal" variant="outlined" />
+					<TextField fullWidth id="outlined-name" label="Наименование *" className={classes.textField} value={this.state.name}
+						onChange={this.handleChange('name')} margin="normal" variant="outlined" />
+					<TextField fullWidth id="outlined-number" label="Номер местоположения *" value={this.state.locationId}
+						onChange={this.handleChange('number')} value={this.state.locationId} type="number" className={classes.textField} margin="normal" variant="outlined" />
 				</form>
 				<button onClick={() => this.handleSubmit()} type="button" className="btn btn-success">Создать!</button>
 				{message}

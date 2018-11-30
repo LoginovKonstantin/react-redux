@@ -37,7 +37,6 @@ class EnhancedTable extends React.Component {
 	};
 
 	handleRequestSort = (event, property) => {
-		console.log(22)
 		const orderBy = property;
 		let order = 'desc';
 
@@ -95,7 +94,7 @@ class EnhancedTable extends React.Component {
 												key={n.id}
 												selected={isSelected}
 											>
-												<TableCell onClick={() => browserHistory.push('/edit/contest/'+n.id)} numeric>{n.id}</TableCell>
+												<TableCell onClick={() => browserHistory.push('/edit/contests/'+n.id)} numeric>{n.id}</TableCell>
 												<TableCell>{n.name}</TableCell>
 												<TableCell>{n.status}</TableCell>
 												<TableCell numeric>{n.startDate}</TableCell>

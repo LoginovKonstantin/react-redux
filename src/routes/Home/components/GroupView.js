@@ -93,7 +93,7 @@ class EnhancedTable extends React.Component {
 												key={n.id}
 												selected={isSelected}
 											>
-												<TableCell onClick={() => browserHistory.push('/edit/group/'+n.id)} style={{width:30}} numeric>{n.id}</TableCell>
+												<TableCell onClick={() => browserHistory.push('/edit/groups/'+n.id)} style={{width:30}} numeric>{n.id}</TableCell>
 												<TableCell numeric>{n.age}</TableCell>
 												<TableCell numeric>{n.sex == 0 ? 'Ж' : 'М'}</TableCell>
 												<TableCell numeric>{n.weight}</TableCell>

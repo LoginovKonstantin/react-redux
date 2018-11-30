@@ -21,6 +21,22 @@ app.post('/api/addEntity', function (req, res) {
   })
 })
 
+app.post('/api/updateEntity', function (req, res) {
+  console.log(req.body.table);
+  res.json({
+    "status": "ok",
+    "response": "update"
+  })
+})
+
+app.post('/api/removeEntity', function (req, res) {
+  console.log(req.body.table);
+  res.json({
+    "status": "ok",
+    "response": "remove"
+  })
+})
+
 app.get('/api/getTables', function (req, res) {
 
   res.json({

@@ -10,15 +10,15 @@ export default (store) => ({
       /*  Webpack - use require callback to define
           dependencies for bundling   */
       const EditEntity = require('./containers/EditEntityContainer').default
-      const reducer = require('./modules/counter').default
+      const reducer = require('./modules/tables').default
 
       /*  Add the reducer to the store on key 'counter'  */
-      injectReducer(store, { key: 'counter', reducer })
+      injectReducer(store, { key: 'tables', reducer })
 
       /*  Return getComponent   */
       cb(null, EditEntity)
 
     /* Webpack named bundle   */
-    }, 'counter')
+    }, 'tables')
   }
 })

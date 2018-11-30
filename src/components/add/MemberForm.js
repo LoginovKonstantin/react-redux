@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import Noty from './Noty';
-import CONFIG from '../config';
+import Noty from '../Noty';
+import CONFIG from '../../config';
 import './MemberForm.scss'
 
 const styles = theme => ({
@@ -90,11 +90,11 @@ class OutlinedTextFields extends React.Component {
 		}
 		return (
 			<div>
-				<TextField fullWidth id="outlined-name" label="Фамилия *" className={classes.textField} value={this.state.name}
+				<TextField fullWidth id="outlined-name" label="Фамилия *" className={classes.textField} value={this.state.secondName}
 					onChange={this.handleChange('secondName')} margin="normal" variant="outlined" />
-				<TextField fullWidth id="outlined-name" label="Имя *" className={classes.textField} value={this.state.name}
+				<TextField fullWidth id="outlined-name" label="Имя *" className={classes.textField} value={this.state.firstName}
 					onChange={this.handleChange('firstName')} margin="normal" variant="outlined" />
-				<TextField fullWidth id="outlined-name" label="Отчество *" className={classes.textField} value={this.state.name}
+				<TextField fullWidth id="outlined-name" label="Отчество *" className={classes.textField} value={this.state.lastName}
 					onChange={this.handleChange('lastName')} margin="normal" variant="outlined" />
 				<TextField fullWidth id="outlined-number" label="Номер участника *" value={this.state.number}
 					onChange={this.handleChange('number')} value={this.state.number} type="number" className={classes.textField} margin="normal" variant="outlined" />

@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import dateFormat from 'dateformat';
-import Noty from './Noty';
-import CONFIG from '../config';
+import Noty from '../Noty';
+import CONFIG from '../../config';
 
 const styles = theme => ({
   container: {

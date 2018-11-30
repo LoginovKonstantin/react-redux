@@ -12,7 +12,7 @@ import EditEntity from './EditEntity'
 export const createRoutes = (store) => ({
   path        : '/',
   component   : CoreLayout,
-  indexRoute  : Home,
+  indexRoute  : Home(store),
   childRoutes : [
     AddEntity(store),
     EditEntity(store),

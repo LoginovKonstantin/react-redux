@@ -2,13 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import Noty from './Noty';
-import CONFIG from '../config';
-import FormControl from '@material-ui/core/FormControl';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormLabel from '@material-ui/core/FormLabel';
+import Noty from '../Noty';
+import CONFIG from '../../config';
 const styles = theme => ({
   container: {
     display: 'flex',
@@ -34,10 +29,11 @@ const styles = theme => ({
 
 class OutlinedTextFields extends React.Component {
   state = {
-    age: 18,
-    sex: '1',
-    weight: 65,
-    rank: '',
+    secondName: '',
+    firstName: '',
+    lastName: '',
+    organizationId: 1,
+    contestId: 1,
     status: '',
     open: false
   };
@@ -58,12 +54,12 @@ class OutlinedTextFields extends React.Component {
 
   handleSubmit = () => {
     const state = this.state;
-    console.log(state)
     if (
-      parseInt(state.age) < 1 || 
-      parseInt(state.sex) !== 1 || parseInt(state.sex) !== 1 ||
-      parseInt(state.weight) < 1 ||
-      parseInt(state.rank.length) < 1
+      state.secondName.length < 1 ||
+      state.firstName.length < 1 ||
+      state.lastName.length < 1 ||
+      state.contestId < 1 ||
+      state.organizationId < 1
     ) {
       console.log("Не все поля зоплнены");
     } else {
@@ -74,11 +70,12 @@ class OutlinedTextFields extends React.Component {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          table: "group",
-          age: state.age,
-          sex: state.sex,
-          weight: state.weight,
-          rank: state.rank
+          table: "judge",
+          secondName: state.secondName,
+          firstName: state.firstName,
+          lastName: state.lastName,
+          contestId: state.contestId,
+          organizationId: state.organizationId
         })
       }).then(resp => resp.json()).then(json => {
         if (json.status == "ok") this.setState({ status: "ok", open: true })
@@ -99,25 +96,16 @@ class OutlinedTextFields extends React.Component {
     return (
       <div>
         <form className={classes.container} autoComplete="off">
-          <TextField fullWidth id="outlined-number" label="Возраст участника *" value={this.state.age}
-            onChange={this.handleChange('age')} value={this.state.age} type="number" className={classes.textField} margin="normal" variant="outlined" />
-          <TextField fullWidth id="outlined-number" label="Вес участника *" value={this.state.weight}
-            onChange={this.handleChange('weight')} value={this.state.weight} type="number" className={classes.textField} margin="normal" variant="outlined" />
-          <FormControl component="fieldset" className={classes.formControl}>
-            <FormLabel component="legend">Пол</FormLabel>
-            <RadioGroup
-              aria-label="Gender"
-              name="gender1"
-              className={classes.group}
-              value={this.state.sex}
-              onChange={this.handleChange('sex')}
-            >
-              <FormControlLabel value={1 + ''} control={<Radio />} label="М" />
-              <FormControlLabel value={0 + ''} control={<Radio />} label="Ж" />
-            </RadioGroup>
-          </FormControl>
-          <TextField fullWidth id="outlined-number" label="Разряд *" value={this.state.rank}
-            onChange={this.handleChange('rank')} value={this.state.rank} type="string" className={classes.textField} margin="normal" variant="outlined" />
+          <TextField fullWidth id="outlined-number" label="Фамилия *" value={this.state.secondName}
+            onChange={this.handleChange('secondName')} value={this.state.secondName} type="string" className={classes.textField} margin="normal" variant="outlined" />
+          <TextField fullWidth id="outlined-number" label="Имя *" value={this.state.firstName}
+            onChange={this.handleChange('firstName')} value={this.state.firstName} type="string" className={classes.textField} margin="normal" variant="outlined" />
+          <TextField fullWidth id="outlined-number" label="Отчетсво *" value={this.state.lastName}
+            onChange={this.handleChange('lastName')} value={this.state.lastName} type="string" className={classes.textField} margin="normal" variant="outlined" />
+          <TextField fullWidth id="outlined-number" label="Номер организации *" value={this.state.organizationId}
+            onChange={this.handleChange('organizationId')} value={this.state.organizationId} type="number" className={classes.textField} margin="normal" variant="outlined" />
+          <TextField fullWidth id="outlined-number" label="Номер соревнования *" value={this.state.contestId}
+            onChange={this.handleChange('contestId')} value={this.state.contestId} type="number" className={classes.textField} margin="normal" variant="outlined" />
         </form>
         <button onClick={() => this.handleSubmit()} type="button" className="btn btn-success">Создать!</button>
         {message}
