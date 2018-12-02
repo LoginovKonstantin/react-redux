@@ -60,6 +60,7 @@ class OutlinedTextFields extends React.Component {
 
   handleSubmit = () => {
     const state = this.state;
+    const id = this.props.id + 1;
     if (
       state.secondName.length < 1 ||
       state.firstName.length < 1 ||
@@ -77,11 +78,12 @@ class OutlinedTextFields extends React.Component {
         },
         body: JSON.stringify({
           table: "judge",
-          secondName: state.secondName,
-          firstName: state.firstName,
-          lastName: state.lastName,
-          contestId: state.contestId,
-          organizationId: state.organizationId
+          id: id,
+          second_name: state.secondName,
+          first_name: state.firstName,
+          last_name: state.lastName,
+          id_contest: state.contestId,
+          id_organization: state.organizationId
         })
       }).then(resp => resp.json()).then(json => {
         if (json.status == "ok") {
@@ -138,7 +140,7 @@ class OutlinedTextFields extends React.Component {
           <TextField fullWidth id="outlined-number" label="Номер соревнования *" value={this.state.contestId}
             onChange={this.handleChange('contestId')} value={this.state.contestId} type="number" className={classes.textField} margin="normal" variant="outlined" />
         </form>
-        <button onClick={() => this.handleSubmit()} type="button" className="btn btn-success">Создать!</button>
+        <button onClick={() => this.handleSubmit()} type="button" className="btn btn-success">Изменить!</button>
         <button onClick={() => this.handleErrorSubmit()} type="button" className="btn btn-danger">Удалить запись!</button>
         {message}
       </div>

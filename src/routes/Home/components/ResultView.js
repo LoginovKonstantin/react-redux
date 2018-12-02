@@ -73,15 +73,10 @@ class EnhancedTable extends React.Component {
 								orderBy={orderBy}
 								onRequestSort={this.handleRequestSort}
 								rows={[
-									// { id: 'idMember', numeric: true, disablePadding: false, label: '#' },
-									// { id: 'secondName', numeric: false, disablePadding: false, label: 'Фамилия' },
-									// { id: 'firstName', numeric: false, disablePadding: false, label: 'Имя' },
-									// { id: 'lastName', numeric: false, disablePadding: false, label: 'Отчество' },
-									// { id: 'number', numeric: true, disablePadding: false, label: 'Номер участника' },
-									// { id: 'contestId', numeric: true, disablePadding: false, label: 'Номер соревнования' },
-									// { id: 'organizationId', numeric: true, disablePadding: false, label: 'Номер организация' },
-									// { id: 'resultId', numeric: true, disablePadding: false, label: 'Номер результата' },
-									// { id: 'groupId', numeric: true, disablePadding: false, label: 'Номер группы' }									
+									{ id: 'idResult', numeric: true, disablePadding: false, label: '#' },
+									{ id: 'place', numeric: true, disablePadding: false, label: 'Место' },
+									{ id: 'points', numeric: true, disablePadding: false, label: 'Количество очков' },
+									{ id: 'contestId', numeric: true, disablePadding: false, label: 'Номер соревнования' },
 								]}
 							/>
 							<TableBody>
@@ -98,16 +93,10 @@ class EnhancedTable extends React.Component {
 												key={n.id}
 												selected={isSelected}
 											>
-												{/* <TableCell onClick={() => browserHistory.push('/edit/results/'+n.id)} numeric>{n.id}</TableCell>
-												<TableCell>{n.secondName}</TableCell>
-												<TableCell>{n.firstName}</TableCell>
-												<TableCell>{n.lastName}</TableCell>
-												<TableCell numeric>{n.number}</TableCell>
+												<TableCell onClick={() => browserHistory.push('/edit/results/' + n.id)} style={{width:30}} numeric>{n.id}</TableCell>
+												<TableCell numeric>{n.place}</TableCell>
+												<TableCell numeric>{n.points}</TableCell>
 												<TableCell numeric>{n.contestId}</TableCell>
-												<TableCell numeric>{n.organizationId}</TableCell>
-												<TableCell numeric>{n.resultId}</TableCell>
-												<TableCell numeric>{n.groupId}</TableCell> */}
-
 											</TableRow>
 										);
 									})}

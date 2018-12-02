@@ -73,15 +73,12 @@ class EnhancedTable extends React.Component {
 								orderBy={orderBy}
 								onRequestSort={this.handleRequestSort}
 								rows={[
-									// { id: 'idMember', numeric: true, disablePadding: false, label: '#' },
-									// { id: 'secondName', numeric: false, disablePadding: false, label: 'Фамилия' },
-									// { id: 'firstName', numeric: false, disablePadding: false, label: 'Имя' },
-									// { id: 'lastName', numeric: false, disablePadding: false, label: 'Отчество' },
-									// { id: 'number', numeric: true, disablePadding: false, label: 'Номер участника' },
-									// { id: 'contestId', numeric: true, disablePadding: false, label: 'Номер соревнования' },
-									// { id: 'organizationId', numeric: true, disablePadding: false, label: 'Номер организация' },
-									// { id: 'resultId', numeric: true, disablePadding: false, label: 'Номер результата' },
-									// { id: 'groupId', numeric: true, disablePadding: false, label: 'Номер группы' }									
+									{ id: 'idInfringement', numeric: true, disablePadding: false, label: '#' },
+									{ id: 'description', numeric: false, disablePadding: false, label: 'Описание' },
+									{ id: 'comment', numeric: false, disablePadding: false, label: 'Комментарий' },
+									{ id: 'infrDate', numeric: false, disablePadding: false, label: 'Дата нарушения' },
+									{ id: 'memberId', numeric: true, disablePadding: false, label: 'Номер участника' },
+									{ id: 'judgeId', numeric: true, disablePadding: false, label: 'Номер судьи' },
 								]}
 							/>
 							<TableBody>
@@ -98,16 +95,12 @@ class EnhancedTable extends React.Component {
 												key={n.id}
 												selected={isSelected}
 											>
-												{/* <TableCell onClick={() => browserHistory.push('/edit/infringements/'+n.id)} numeric>{n.id}</TableCell>
-												<TableCell>{n.secondName}</TableCell>
-												<TableCell>{n.firstName}</TableCell>
-												<TableCell>{n.lastName}</TableCell>
-												<TableCell numeric>{n.number}</TableCell>
-												<TableCell numeric>{n.contestId}</TableCell>
-												<TableCell numeric>{n.organizationId}</TableCell>
-												<TableCell numeric>{n.resultId}</TableCell>
-												<TableCell numeric>{n.groupId}</TableCell> */}
-
+												<TableCell onClick={() => browserHistory.push('/edit/infringements/'+n.id)} numeric>{n.id}</TableCell>
+												<TableCell>{n.description}</TableCell>
+												<TableCell>{n.comment}</TableCell>
+												<TableCell numeric>{n.infringementDate}</TableCell>
+												<TableCell numeric>{n.memberId}</TableCell>
+												<TableCell numeric>{n.judgeId}</TableCell>
 											</TableRow>
 										);
 									})}

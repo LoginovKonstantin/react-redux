@@ -64,13 +64,13 @@ class OutlinedTextFields extends React.Component {
 				},
 				body: JSON.stringify({
 					table: "member",
-					firstName: state.firstName,
-					secondName: state.secondName,
-					lastName: state.lastName,
+					first_name: state.firstName,
+					second_name: state.secondName,
+					last_name: state.lastName,
 					number: state.number,
-					contestId: state.contestId,
-					organizationId: state.organizationId,
-					groupId: state.groupId,
+					id_contest: state.contestId,
+					id_organization: state.organizationId,
+					id_group: state.groupId,
 				})
 			}).then(resp => resp.json()).then(json => {
 				if (json.status == "ok") this.setState({ status: "ok", open: true })

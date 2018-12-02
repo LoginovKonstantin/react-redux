@@ -33,8 +33,6 @@ class OutlinedTextFields extends React.Component {
 	constructor(props) {
 		super(props);
 		const e = props.entity;
-		console.log(dateFormat(e.dateStart, "dddd, mmmm dS, yyyy, h:MM:ss TT"));
-
 		this.state = {
 			dateStart: e.dateStart,
 			dateEnd: e.dateEnd,
@@ -58,7 +56,7 @@ class OutlinedTextFields extends React.Component {
 
 	handleSubmit = () => {
 		const state = this.state;
-		const id = this.props.id;
+		const id = this.props.id + 1;
 		const nowDate = (dateFormat('', "yyyy-mm-dd"))
 		if (
 			state.status.length < 1 ||
@@ -82,9 +80,9 @@ class OutlinedTextFields extends React.Component {
 					id: id,
 					status: state.status,
 					name: state.name,
-					dateStart: dateFormat(state.dateStart, "dd/mm/yy"),
-					dateEnd: dateFormat(state.dateEnd, "dd/mm/yy"),
-					organizationId: state.organizationId
+					date_start: dateFormat(state.dateStart, "dd/mm/yy"),
+					date_end: dateFormat(state.dateEnd, "dd/mm/yy"),
+					id_organization: state.organizationId
 				})
 			}).then(resp => resp.json()).then(json => {
 				if (json.status == "ok") {

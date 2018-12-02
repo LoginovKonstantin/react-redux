@@ -50,7 +50,7 @@ class OutlinedTextFields extends React.Component {
 				body: JSON.stringify({
 					table: "organization",
 					name: state.name,
-					locationId: state.locationId
+					id_location: state.locationId
 				})
 			}).then(resp => resp.json()).then(json => {
 				if (json.status == "ok") this.setState({ status: "ok", open: true })
@@ -74,7 +74,7 @@ class OutlinedTextFields extends React.Component {
 					<TextField fullWidth id="outlined-name" label="Наименование *" className={classes.textField} value={this.state.name}
 						onChange={this.handleChange('name')} margin="normal" variant="outlined" />
 					<TextField fullWidth id="outlined-number" label="Номер местоположения *" value={this.state.locationId}
-						onChange={this.handleChange('number')} value={this.state.locationId} type="number" className={classes.textField} margin="normal" variant="outlined" />
+						onChange={this.handleChange('locationId')} value={this.state.locationId} type="number" className={classes.textField} margin="normal" variant="outlined" />
 				</form>
 				<button onClick={() => this.handleSubmit()} type="button" className="btn btn-success">Создать!</button>
 				{message}

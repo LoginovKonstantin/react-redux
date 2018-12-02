@@ -69,9 +69,9 @@ class OutlinedTextFields extends React.Component {
 					table: "contest",
 					status: state.status,
 					name: state.name,
-					dateStart: dateFormat(state.dateStart, "dd/mm/yy"),
-					dateEnd: dateFormat(state.dateEnd, "dd/mm/yy"),
-					organizationId: state.organizationId
+					date_start: dateFormat(state.dateStart, "dd/mm/yy"),
+					date_end: dateFormat(state.dateEnd, "dd/mm/yy"),
+					id_organization: state.organizationId
 				})
 			}).then(resp => resp.json()).then(json => {
 				if (json.status == "ok") this.setState({ status: "ok", open: true })

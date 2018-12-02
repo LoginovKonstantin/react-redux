@@ -39,7 +39,7 @@ class OutlinedTextFields extends React.Component {
   handleSubmit = () => {
     const state = this.state;
     console.log(state.points);
-    if (state.place < 0 || state.points < 0) {
+    if (state.place < 0 || state.points < 0 || state.contestId < 1) {
       console.log("Не все поля зоплнены");
     } else {
       fetch(CONFIG.ENDPOINTS.ADD_ENTITY, {
@@ -51,7 +51,8 @@ class OutlinedTextFields extends React.Component {
         body: JSON.stringify({
           table: "result",
           place: state.place,
-          points: state.points
+          points: state.points,
+          id_contest: state.contestId,
         })
       }).then(resp => resp.json()).then(json => {
         if (json.status == "ok") this.setState({ status: "ok", open: true })
@@ -76,6 +77,8 @@ class OutlinedTextFields extends React.Component {
             onChange={this.handleChange('place')} value={this.state.place} type="number" className={classes.textField} margin="normal" variant="outlined" />
           <TextField fullWidth id="outlined-number" label="Количество очков *" value={this.state.points}
             onChange={this.handleChange('points')} value={this.state.points} type="number" className={classes.textField} margin="normal" variant="outlined" />
+          <TextField fullWidth id="outlined-number" label="Номер соревнований *" value={this.state.contestId}
+            onChange={this.handleChange('contestId')} value={this.state.contestId} type="number" className={classes.textField} margin="normal" variant="outlined" />
         </form>
         <button onClick={() => this.handleSubmit()} type="button" className="btn btn-success">Создать!</button>
         {message}

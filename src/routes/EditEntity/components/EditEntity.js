@@ -44,7 +44,7 @@ class EditEntity extends React.Component {
     let resultId = false;
     table.forEach((e, i) => {
       if(e.id == id) {
-        resultId = i
+        resultId = i;
         return;
       }
     })
@@ -57,6 +57,8 @@ class EditEntity extends React.Component {
     const tables = this.props.tables;
     if (tables && Object.keys(tables).length > 0 && tables[table] && (this.getById(tables[table], id) || this.getById(tables[table], id) === 0)) {
       const correctId = this.getById(tables[table], id);
+      console.log(tables[table], id)
+      console.log(correctId);
       switch (table) {
         case "members":
           return (<EditMember id={correctId} entity={tables[table][correctId]} />);

@@ -51,7 +51,7 @@ class OutlinedTextFields extends React.Component {
 
 	handleSubmit = () => {
 		const state = this.state;
-		const id = this.props.id;
+		const id = this.props.id + 1;
 		if (
 			state.firstName.length < 1 ||
 			state.secondName.length < 1 ||
@@ -72,14 +72,14 @@ class OutlinedTextFields extends React.Component {
 				body: JSON.stringify({
 					table: "member",
 					id: id,
-					firstName: state.firstName,
-					secondName: state.secondName,
-					lastName: state.lastName,
+					first_name: state.firstName,
+					second_name: state.secondName,
+					last_name: state.lastName,
 					number: state.number,
-					contestId: state.contestId,
-					organizationId: state.organizationId,
-					groupId: state.groupId,
-					resultId: state.resultId < 1 ? null : state.resultId
+					id_contest: state.contestId,
+					id_organization: state.organizationId,
+					id_group: state.groupId,
+					id_result: state.resultId < 1 ? null : state.resultId
 				})
 			}).then(resp => resp.json()).then(json => {
 				if (json.status == "ok") {
