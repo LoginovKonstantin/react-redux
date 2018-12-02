@@ -56,7 +56,7 @@ class OutlinedTextFields extends React.Component {
 
 	handleSubmit = () => {
 		const state = this.state;
-		const id = this.props.id + 1;
+		const id = this.props.id;
 		const nowDate = (dateFormat('', "yyyy-mm-dd"))
 		if (
 			state.status.length < 1 ||

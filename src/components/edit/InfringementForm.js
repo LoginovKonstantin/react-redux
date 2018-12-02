@@ -30,15 +30,20 @@ const styles = theme => ({
 });
 
 class OutlinedTextFields extends React.Component {
-  state = {
-    description: '',
-    judgeId: '',
-    infringementDate: '',
-    comment: '',
-    idMember: '',
-    status: '',
-    open: false
-  };
+
+  constructor(props) {
+    super(props);
+    const e = props.entity;
+    this.state = {
+      description: e.description,
+      judgeId: e.judgeId,
+      infringementDate: '',
+      comment: e.comment,
+      idMember: e.memberId,
+      status: '',
+      open: false
+    };
+  }
 
   handleChange = name => event => {
     this.setState({
@@ -47,8 +52,9 @@ class OutlinedTextFields extends React.Component {
   };
 
   handleSubmit = () => {
+    console.log(22);
     const state = this.state;
-    console.log(this.state)
+    const id = this.props.id;
     if (
       state.description.length < 1 ||
       parseInt(state.judgeId) < 1 ||
@@ -57,7 +63,7 @@ class OutlinedTextFields extends React.Component {
     ) {
       console.log('Заполните все поля, проверьте корректность даты');
     } else {
-      fetch(CONFIG.ENDPOINTS.ADD_ENTITY, {
+      fetch(CONFIG.ENDPOINTS.UPDATE_ENTITY, {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -65,28 +71,52 @@ class OutlinedTextFields extends React.Component {
         },
         body: JSON.stringify({
           table: "infringement",
+          id: id,
           description: state.description,
-          judgeId: state.judgeId,
-          infrDate: dateFormat(state.infringementDate, "dd/mm/yy"),
+          id_judge: state.judgeId,
+          infr_date: dateFormat(state.infringementDate, "dd/mm/yy"),
           comment: state.comment,
-          idMember: state.idMember
+          id_member: state.idMember
         })
       }).then(resp => resp.json()).then(json => {
-        if (json.status == "ok") this.setState({ status: "ok", open: true })
-        else this.setState({ status: "error", open: true });
+        if (json.status == "ok") {
+          this.setState({ status: "ok", response: json.response, open: true })
+          setTimeout(()=> window.location.href = "/", 1500)
+        }
+        else this.setState({ status: "error", response: json.response, open: true });
       })
     }
   }
-
+	handleErrorSubmit = () => {
+		const id = this.props.id;
+		fetch(CONFIG.ENDPOINTS.REMOVE_ENTITY, {
+			method: 'POST',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({ table: "infringement",	id })
+		}).then(resp => resp.json()).then(json => {
+			if (json.status == "ok") {
+				this.setState({ status: "ok", response: json.response, open: true })
+				setTimeout(()=> window.location.href = "/", 1500)
+			}
+			else this.setState({ status: "error", response: json.response, open: true });
+		})
+	}
   render() {
     const { classes } = this.props;
-    let message = '';
-    if (this.state.status == "ok") {
-      message = <Noty message="Запись добавлена" variant="success" open={this.state.open} closeNoty={() => this.setState({ open: false })} />
-    }
-    if (this.state.status == "error") {
-      message = <Noty message="Не удалось добавить запись" variant="error" open={this.state.open} closeNoty={() => this.setState({ open: false })} />;
-    }
+		let message = '';
+		const { status, response } = this.state;
+		if (status == "ok" && response == "update") {
+			message = <Noty message="Запись обновлена" variant="success" open={this.state.open} closeNoty={() => this.setState({ open: false })} />
+		} else if (status == "ok" && response == "remove") {
+			message = <Noty message="Запись удалена" variant="success" open={this.state.open} closeNoty={() => this.setState({ open: false })} />
+		} else if (status == "error" && response == "update") {
+			message = <Noty message="Не удалось обновить запись" variant="error" open={this.state.open} closeNoty={() => this.setState({ open: false })} />;
+		} else if (status == "error" && response == "remove") {
+			message = <Noty message="Не удалось удалить запись" variant="error" open={this.state.open} closeNoty={() => this.setState({ open: false })} />;
+		}
     return (
       <div>
         <form className={classes.container} autoComplete="off">
@@ -101,7 +131,8 @@ class OutlinedTextFields extends React.Component {
           <TextField fullWidth id="outlined-number" label="Номер участника *" value={this.state.idMember}
             onChange={this.handleChange('idMember')} value={this.state.idMember} type="number" className={classes.textField} margin="normal" variant="outlined" />
         </form>
-        <button onClick={() => this.handleSubmit()} type="button" className="btn btn-success">Создать!</button>
+        <button onClick={() => this.handleSubmit()} type="button" className="btn btn-success">Изменить!</button>
+        <button onClick={() => this.handleErrorSubmit()} type="button" className="btn btn-danger">Удалить запись!</button>
         {message}
       </div>
     );

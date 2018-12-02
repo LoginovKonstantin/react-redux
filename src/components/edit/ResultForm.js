@@ -43,7 +43,7 @@ class OutlinedTextFields extends React.Component {
 
   handleSubmit = () => {
     const state = this.state;
-    const id = this.props.id + 1;
+    const id = this.props.id;
     if (state.place < 0 || state.points < 0) {
       console.log("Не все поля зоплнены");
     } else {
@@ -70,7 +70,7 @@ class OutlinedTextFields extends React.Component {
     }
   }
 	handleErrorSubmit = () => {
-		const id = this.props.id + 1;
+		const id = this.props.id;
 		fetch(CONFIG.ENDPOINTS.REMOVE_ENTITY, {
 			method: 'POST',
 			headers: {

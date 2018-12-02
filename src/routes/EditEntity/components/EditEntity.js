@@ -61,21 +61,21 @@ class EditEntity extends React.Component {
       console.log(correctId);
       switch (table) {
         case "members":
-          return (<EditMember id={correctId} entity={tables[table][correctId]} />);
+          return (<EditMember id={id} entity={tables[table][correctId]} />);
         case "contests":
-          return (<EditContest id={correctId} entity={tables[table][correctId]} />);
+          return (<EditContest id={id} entity={tables[table][correctId]} />);
         case "groups":
-          return (<EditGroup id={correctId} entity={tables[table][correctId]} />);
+          return (<EditGroup id={id} entity={tables[table][correctId]} />);
         case "infringements":
-          return (<EditInfringement id={correctId} entity={tables[table][correctId]} />);
+          return (<EditInfringement id={id} entity={tables[table][correctId]} />);
         case "judges":
-          return (<EditJudge id={correctId} entity={tables[table][correctId]} />);
+          return (<EditJudge id={id} entity={tables[table][correctId]} />);
         case "locations":
-          return (<EditLocation id={correctId} entity={tables[table][correctId]} />);
+          return (<EditLocation id={id} entity={tables[table][correctId]} />);
         case "organizations":
-          return (<EditOrganization id={correctId} entity={tables[table][correctId]} />);
+          return (<EditOrganization id={id} entity={tables[table][correctId]} />);
         case "results":
-          return (<EditResult id={correctId} entity={tables[table][correctId]} />);
+          return (<EditResult id={id} entity={tables[table][correctId]} />);
         default:
           return (<div className="alert alert-warning" role="alert"> Я не смогла найти таблицу по запросу( </div>);
       }

@@ -107,7 +107,7 @@ class OutlinedTextFields extends React.Component {
 					<TextField fullWidth id="outlined-name" label="Город *" className={classes.textField} value={this.state.city}
 						onChange={this.handleChange('city')} margin="normal" variant="outlined" />
 				</form>
-				<button onClick={() => this.handleSubmit()} type="button" className="btn btn-success">Создать!</button>
+				<button onClick={() => this.handleSubmit()} type="button" className="btn btn-success">Изменить!</button>
 				<button onClick={() => this.handleErrorSubmit()} type="button" className="btn btn-danger">Удалить запись!</button>
 				{message}
 			</div>

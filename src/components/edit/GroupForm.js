@@ -57,7 +57,8 @@ class OutlinedTextFields extends React.Component {
     const id = this.props.id;
     if (
       parseInt(state.age) < 1 ||
-      parseInt(state.sex) !== 1 || parseInt(state.sex) !== 1 ||
+      // state.sex !== '0' || state.sex !== '1' ||
+      // parseInt(state.sex) != 0  || parseInt(state.sex) != 1 ||
       parseInt(state.weight) < 1 ||
       parseInt(state.rank.length) < 1
     ) {
