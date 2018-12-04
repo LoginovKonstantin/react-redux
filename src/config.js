@@ -5,7 +5,8 @@ const ENDPOINTS = {
     HOME: HOST + "/api/getTables",
     ADD_ENTITY: HOST + "/api/addEntity",
     UPDATE_ENTITY: HOST + "/api/updateEntity",
-    REMOVE_ENTITY: HOST + "/api/removeEntity"
+    REMOVE_ENTITY: HOST + "/api/removeEntity",
+    GET_TOP: HOST + "/api/getTopByParams"
 }
 
 const POST_REQUEST = (...params) => ({

@@ -15,6 +15,7 @@ import HomeIcon from '@material-ui/icons/Home';
 let linkToName = [
   { link: "/", name: "Начальная страница" }, //HOME
   { link: "/add", name: "Добавить" },
+  { link: "/top", name: "ТОП" },
   // { link: "/edit/member/?id=*", name: "Редактировать" },
   // { link: "/counter", name: "Counter" },
   // { link: "/about", name: "About" },
@@ -59,7 +60,7 @@ class PageLayout extends React.Component {
         <Tab onClick={() => browserHistory.push("/")} icon={<HomeIcon />} />
       </Tabs>
       :
-      <Tabs value={href.indexOf("add") > -1 ? 1 : 0} onChange={this.handleChange} scrollable scrollButtons="auto">
+      <Tabs value={href.indexOf("add") > -1 ? 1 : href.indexOf("top") > -1 ? 2 : 0} onChange={this.handleChange} scrollable scrollButtons="auto">
         {linkToName.map(TemplateNavigation)}
       </Tabs>
     return (
