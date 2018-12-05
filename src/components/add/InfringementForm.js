@@ -48,7 +48,6 @@ class OutlinedTextFields extends React.Component {
 
   handleSubmit = () => {
     const state = this.state;
-    console.log(this.state)
     if (
       state.description.length < 1 ||
       parseInt(state.judgeId) < 1 ||

@@ -80,7 +80,6 @@ class OutlinedTextFields extends React.Component {
         })
       }).then(resp => resp.json()).then(json => {
         if (json.status == "ok") {
-          console.log(json);
           this.setState({ status: "ok", response: json.response, open: true })
           setTimeout(() => window.location.href = "/", 1500)
         }
@@ -111,7 +110,6 @@ class OutlinedTextFields extends React.Component {
     const { classes } = this.props;
     let message = '';
     const { status, response } = this.state;
-    console.log(this.state)
     if (status == "ok" && response == "update") {
       message = <Noty message="Запись обновлена" variant="success" open={this.state.open} closeNoty={() => this.setState({ open: false })} />
     } else if (status == "ok" && response == "remove") {

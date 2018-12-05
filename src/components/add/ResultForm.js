@@ -38,7 +38,6 @@ class OutlinedTextFields extends React.Component {
 
   handleSubmit = () => {
     const state = this.state;
-    console.log(state.points);
     if (state.place < 0 || state.points < 0 || state.contestId < 1) {
       console.log("Не все поля зоплнены");
     } else {

@@ -24,18 +24,6 @@ const styles = theme => ({
   },
 });
 
-let id = 0;
-function createData(name, calories, fat, carbs, protein) {
-  id += 1;
-  return { id, name, calories, fat, carbs, protein };
-}
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
 class Top extends React.Component {
   state = {
     contest: 0,
@@ -44,12 +32,10 @@ class Top extends React.Component {
     members: '',
   };
   handleChange = event => {
-    console.log(event.target.name)
     this.setState({ [event.target.name]: event.target.value });
   };
   handleSubmit = () => {
     const state = this.state;
-    console.log(state);
     fetch(CONFIG.ENDPOINTS.GET_TOP, {
       method: 'POST',
       headers: {
@@ -63,8 +49,8 @@ class Top extends React.Component {
         id_group: state.group
       })
     }).then(resp => resp.json()).then(json => {
-      if(json.members) {
-        this.setState({ members: json.members });
+      if(json.response.members) {
+        this.setState({ members: json.response.members });
       } else {
         this.setState({ members: '' });
       }
@@ -77,30 +63,32 @@ class Top extends React.Component {
     const { contests, groups, organizations } = this.props.tables;
     const classes = this.props.classes;
     let table = '';
-    if(this.state.member != '') {
+    if(this.state.members && this.state.members[0]) {
       table = (
         <Paper className={classes.root}>
           <Table className={classes.table}>
             <TableHead>
               <TableRow>
-                <TableCell>Dessert (100g serving)</TableCell>
-                <TableCell numeric>Calories</TableCell>
-                <TableCell numeric>Fat (g)</TableCell>
-                <TableCell numeric>Carbs (g)</TableCell>
-                <TableCell numeric>Protein (g)</TableCell>
+                <TableCell numeric>#</TableCell>
+                <TableCell>Фамилия</TableCell>
+                <TableCell>Имя</TableCell>
+                <TableCell>Отчество</TableCell>
+                <TableCell numeric>Место</TableCell>
+                <TableCell numeric>Количество очков</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows.map(row => {
+              {this.state.members.map(row => {
                 return (
                   <TableRow key={row.id}>
-                    <TableCell component="th" scope="row">
-                      {row.name}
+                    <TableCell numeric component="th" scope="row">
+                      {row.id}
                     </TableCell>
-                    <TableCell numeric>{row.calories}</TableCell>
-                    <TableCell numeric>{row.fat}</TableCell>
-                    <TableCell numeric>{row.carbs}</TableCell>
-                    <TableCell numeric>{row.protein}</TableCell>
+                    <TableCell>{row.secondName}</TableCell>
+                    <TableCell>{row.firstName}</TableCell>
+                    <TableCell>{row.lastName}</TableCell>
+                    <TableCell numeric>{row.place}</TableCell>
+                    <TableCell numeric>{row.points}</TableCell>
                   </TableRow>
                 );
               })}
@@ -133,8 +121,7 @@ class Top extends React.Component {
           </Select>
         </FormControl> 
         <button onClick={() => this.handleSubmit()} type="button" className="btn btn-success">Загрузить!</button>
-
-        
+        {table}        
       </div>
     )
   }

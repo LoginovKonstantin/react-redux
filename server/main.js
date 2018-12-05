@@ -37,6 +37,129 @@ app.post('/api/removeEntity', function (req, res) {
   })
 })
 
+app.post('/api/getTopByParams', function (req, res) {
+  console.log(req.body.table);
+  res.json({
+    "status": "ok",
+    "response": {
+      "members": [
+        {
+          "id": 1,
+          "place": 1,
+          "points": 101,
+          "secondName": "SecondName1",
+          "firstName": "FirstName1",
+          "lastName": "LastName1"
+        },
+        {
+          "id": 2,
+          "place": 2,
+          "points": 100,
+          "secondName": "SecondName2",
+          "firstName": "FirstName2",
+          "lastName": "LastName2"
+        },
+        {
+          "id": 3,
+          "place": 3,
+          "points": 99,
+          "secondName": "SecondName3",
+          "firstName": "FirstName3",
+          "lastName": "LastName3"
+        },
+        {
+          "id": 4,
+          "place": 4,
+          "points": 98,
+          "secondName": "SecondName4",
+          "firstName": "FirstName4",
+          "lastName": "LastName4"
+        },
+        {
+          "id": 5,
+          "place": 5,
+          "points": 97,
+          "secondName": "SecondName5",
+          "firstName": "FirstName5",
+          "lastName": "LastName5"
+        },
+        {
+          "id": 6,
+          "place": 6,
+          "points": 96,
+          "secondName": "SecondName6",
+          "firstName": "FirstName6",
+          "lastName": "LastName6"
+        },
+        {
+          "id": 7,
+          "place": 7,
+          "points": 95,
+          "secondName": "SecondName7",
+          "firstName": "FirstName7",
+          "lastName": "LastName7"
+        },
+        {
+          "id": 8,
+          "place": 8,
+          "points": 94,
+          "secondName": "SecondName8",
+          "firstName": "FirstName8",
+          "lastName": "LastName8"
+        },
+        {
+          "id": 9,
+          "place": 9,
+          "points": 93,
+          "secondName": "SecondName9",
+          "firstName": "FirstName9",
+          "lastName": "LastName9"
+        },
+        {
+          "id": 10,
+          "place": 10,
+          "points": 92,
+          "secondName": "SecondName10",
+          "firstName": "FirstName10",
+          "lastName": "LastName10"
+        },
+        {
+          "id": 11,
+          "place": 11,
+          "points": 91,
+          "secondName": "SecondName11",
+          "firstName": "FirstName11",
+          "lastName": "LastName11"
+        },
+        {
+          "id": 12,
+          "place": 12,
+          "points": 90,
+          "secondName": "SecondName12",
+          "firstName": "FirstName12",
+          "lastName": "LastName12"
+        },
+        {
+          "id": 13,
+          "place": 13,
+          "points": 89,
+          "secondName": "SecondName13",
+          "firstName": "FirstName13",
+          "lastName": "LastName13"
+        },
+        {
+          "id": 14,
+          "place": 14,
+          "points": 88,
+          "secondName": "SecondName14",
+          "firstName": "FirstName14",
+          "lastName": "LastName14"
+        }
+      ]
+    }
+  })
+})
+
 app.get('/api/getTables', function (req, res) {
 
   res.json({
